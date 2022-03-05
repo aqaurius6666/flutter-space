@@ -15,37 +15,39 @@ class Chapter1App extends StatelessWidget {
                 title: const Text("Beloved"),
                 backgroundColor: Colors.deepPurple),
             body: Builder(
-                builder: (context) => Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Center(
-                          child: Column(
-                        children: [
-                          const Padding(
+                builder: (context) => SingleChildScrollView(
+                  child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Center(
+                            child: Column(
+                          children: [
+                            const Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Text(
+                                  "Hello Hằng <3",
+                                  style: TextStyle(
+                                      fontSize: 26, fontWeight: FontWeight.bold),
+                                )),
+                            const Padding(
                               padding: EdgeInsets.all(10),
-                              child: Text(
-                                "Hello Hằng <3",
-                                style: TextStyle(
-                                    fontSize: 26, fontWeight: FontWeight.bold),
-                              )),
-                          const Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Text("iu _._",
-                                style: TextStyle(
-                                    fontSize: 26, fontWeight: FontWeight.bold)),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(30),
-                            child: Image.network(pic),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(30),
-                            child: ElevatedButton(
-                                child: const Text("Đấm cái"),
-                                onPressed: () => punishHang(context)),
-                          )
-                        ],
-                      )),
-                    ))));
+                              child: Text("iu _._",
+                                  style: TextStyle(
+                                      fontSize: 26, fontWeight: FontWeight.bold)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(30),
+                              child: Image.network(pic),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(30),
+                              child: ElevatedButton(
+                                  child: const Text("Đấm cái"),
+                                  onPressed: () => punishHang(context)),
+                            )
+                          ],
+                        )),
+                      ),
+                ))));
   }
 
   void punishHang(BuildContext context) {
