@@ -20,9 +20,9 @@ class Chapter2AppState extends State<Chapter2App> {
   ];
 
   TextStyle? textStyle =
-      const TextStyle(color: Colors.blueAccent, fontSize: 30);
+      const TextStyle(color: Colors.blueAccent, fontSize: 20);
   TextStyle? dropdownItemStyle =
-  const TextStyle(color: Colors.black, fontSize: 20);
+  const TextStyle(color: Colors.black, fontSize: 16);
   TextStyle? dropdownButtonStyle =
       const TextStyle(color: Colors.black, );
 
@@ -77,12 +77,16 @@ class Chapter2AppState extends State<Chapter2App> {
         appBar: AppBar(
           title: const Text("Chuyển đổi hệ đo"),
         ),
-        body: Center(
-          child: SizedBox(
-            width: 200,
+        body: SingleChildScrollView(
+          child: Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(horizontal: 40),
+            margin: EdgeInsets.only(top: 10, bottom: 20),
+            height: 300,
             child: Column(
               children: [
                 Text("Value", style: textStyle),
+                Spacer(flex: 1,),
                 Center(
                   child: TextField(
                     textAlign: TextAlign.center,
@@ -92,11 +96,14 @@ class Chapter2AppState extends State<Chapter2App> {
                     onChanged: onChangeInputMeasureTextField,
                   ),
                 ),
+                Spacer(flex: 1,),
                 Text(
                   "From:",
                   style: textStyle,
                 ),
+                Spacer(flex: 1,),
                 DropdownButton<String>(
+                  isExpanded: true,
                   style: dropdownButtonStyle,
                   value: _inputMeasure,
                   hint: Center(child: Text("Measure", style: dropdownItemStyle,)),
@@ -111,8 +118,11 @@ class Chapter2AppState extends State<Chapter2App> {
                     });
                   },
                 ),
+                Spacer(flex: 1,),
                 Text("To:", style: textStyle),
+                Spacer(flex: 1,),
                 DropdownButton<String>(
+                  isExpanded: true,
                   style: dropdownButtonStyle,
                   value: _outputMeasure,
                   hint: Center(child: Text("Measure", style: dropdownItemStyle,)),
@@ -127,6 +137,7 @@ class Chapter2AppState extends State<Chapter2App> {
                     });
                   },
                 ),
+                Spacer(flex: 1,),
                 Text((outValue() == null) ? "" : outValue().toString(), style: TextStyle(fontSize: 20),),
               ],
             ),
