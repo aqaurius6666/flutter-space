@@ -17,6 +17,8 @@ class TimerHomepage extends StatelessWidget {
       context, MaterialPageRoute(builder: (context) => SettingPage()),
     );
   }
+
+
   @override
   Widget build(BuildContext context) {
     final CountDownTimer countDownTimer = CountDownTimer();

@@ -25,12 +25,14 @@ class CommonButton extends StatelessWidget {
     );
   }
 }
-
+typedef SettingCallback = Function(String, int);
 class SettingButton extends StatelessWidget {
   final Color color;
   final String text;
+  final String type;
   final int value;
-  SettingButton(this.color, this.text, this.value);
+  final SettingCallback callback;
+  SettingButton(this.color, this.text, this.value, this.type, this.callback);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class SettingButton extends StatelessWidget {
         style: TextStyle(color: Colors.white),
       ),
       color: color,
-      onPressed: () => null,
+      onPressed: () => callback(this.type, this.value),
     );
   }
 }
