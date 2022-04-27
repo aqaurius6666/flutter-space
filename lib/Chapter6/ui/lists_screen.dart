@@ -4,15 +4,15 @@ import 'package:demo_flutter/Chapter6/ui/items_screen.dart';
 import 'package:demo_flutter/Chapter6/ui/shopping_list_dialog.dart';
 import 'package:flutter/material.dart';
 
-class ShoppingList extends StatefulWidget {
-  const ShoppingList({Key? key}) : super(key: key);
+class ListScreen extends StatefulWidget {
+  const ListScreen({Key? key}) : super(key: key);
 
 
   @override
-  State<ShoppingList> createState() => _ShoppingListState();
+  State<ListScreen> createState() => _ListScreenState();
 }
 
-class _ShoppingListState extends State<ShoppingList> {
+class _ListScreenState extends State<ListScreen> {
 
   DbHelper dbHelper = DbHelper();
   late List<ShoppingLists> shoppingList = [];

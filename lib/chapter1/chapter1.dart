@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const pic =
-    "https://scontent-hkg4-1.cdninstagram.com/v/t51.2885-19/264255549_1053512348835368_4170754653493169392_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-hkg4-1.cdninstagram.com&_nc_cat=108&_nc_ohc=ZfHm-Ky75RsAX9l4Xx-&edm=AABBvjUBAAAA&ccb=7-4&oh=00_AT8J4Btz3FRjIG7JO_fD7THQETrVg053-bUiKL7F4wdoKg&oe=6229324A&_nc_sid=83d603";
+    "https://lh4.googleusercontent.com/OzP1cRxM6ZlJL9MbIRwYpIMlS-t641UDrJ7H5J2WvXg2Y1sy9Q9Ks6TlhlJEB3YGKHblJXCcCibMe2cs0Y1W=w1592-h989-rw";
 
 class Chapter1App extends StatelessWidget {
   const Chapter1App({Key? key}) : super(key: key);

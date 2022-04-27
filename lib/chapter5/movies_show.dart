@@ -16,19 +16,38 @@ class _MoviesShowState extends State<MoviesShow> {
   late HttpHelper helper;
   late List<Movie> result = [];
   late int movieCount = 0;
+  late int pageCount;
 
   Icon visibleIcon = Icon(Icons.search);
   Widget appBar = Text("Movies show");
+  ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
       helper = HttpHelper();
+      _scrollController.addListener(() {
+        _scrollListener();
+      });
       initialize();
       super.initState();
   }
+  void _scrollListener() async {
+    if (_scrollController.position.extentAfter <= 5) {
 
+      var next = await helper.getNextUpComing();
+      setState(() {
+        pageCount = pageCount + 1;
+        movieCount = movieCount + next.length;
+        result.addAll(next);
+      });
+    }
+  }
   Future<void> search(String text) async {
     result = await helper.searchMovies(text);
+    _scrollController.animateTo(
+      0,
+      duration: Duration(seconds: 2),
+      curve: Curves.fastOutSlowIn,);
     setState(() {
       result = result;
       movieCount = result.length;
@@ -69,6 +88,7 @@ class _MoviesShowState extends State<MoviesShow> {
 
       body: Container(
         child: ListView.builder(
+          controller: _scrollController,
             itemBuilder: (BuildContext context, int position) {
               Movie curr = result[position];
               if (curr.posterPath != "") {
@@ -108,6 +128,7 @@ class _MoviesShowState extends State<MoviesShow> {
   Future initialize() async {
     result = List<Movie>.empty();
     result = await helper.getUpcoming();
+    pageCount = 2;
     setState(() {
       movieCount = result.length;
       result = result;

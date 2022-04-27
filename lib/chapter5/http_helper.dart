@@ -11,10 +11,12 @@ class HttpHelper {
   final String urlSearch = "/search/movie?";
   final String query = "&query=";
   final String urlLanguage = "&language=en-US";
+  final String pageQuery = "&page=";
 
+  static int curPage = 1;
 
-  Future<List<Movie>> getUpcoming() async {
-    final String upcoming = urlBase + urlUpcoming + urlKey + urlLanguage;
+  Future<List<Movie>> getUpcoming([int page = 1]) async {
+    final String upcoming = urlBase + urlUpcoming + urlKey + urlLanguage + pageQuery + page.toString();
     http.Response result = await http.get(Uri.parse(upcoming));
 
     if (result.statusCode == HttpStatus.ok) {
@@ -22,6 +24,21 @@ class HttpHelper {
         final moviesMap = jsonResponse['results'];
         List<Movie> movies = List<Movie>.from(moviesMap.map((i) => Movie.fromJson(i)).toList()) ;
         return movies;
+    }
+
+    return [];
+  }
+
+  Future<List<Movie>> getNextUpComing() async {
+    curPage += 1;
+    final String upcoming = urlBase + urlUpcoming + urlKey + urlLanguage + pageQuery + curPage.toString();
+    http.Response result = await http.get(Uri.parse(upcoming));
+
+    if (result.statusCode == HttpStatus.ok) {
+      final jsonResponse = json.decode(result.body);
+      final moviesMap = jsonResponse['results'];
+      List<Movie> movies = List<Movie>.from(moviesMap.map((i) => Movie.fromJson(i)).toList()) ;
+      return movies;
     }
 
     return [];
